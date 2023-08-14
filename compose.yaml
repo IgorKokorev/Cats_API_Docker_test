@@ -1,0 +1,17 @@
+version: '3'
+services:
+  cats-api:
+    build: cats-api
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_DB=cats-api
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5444:5432
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: cats-api
